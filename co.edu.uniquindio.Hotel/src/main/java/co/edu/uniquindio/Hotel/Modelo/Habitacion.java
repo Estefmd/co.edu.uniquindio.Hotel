@@ -1,17 +1,21 @@
 package co.edu.uniquindio.Hotel.Modelo;
 
+import java.util.List;
+
 public class Habitacion {
     private int numeroHabitacion;
     private String tipoHabitacion;
     private double precioHabitacion;
+    private List<Servicio> servicios;
 
     public Habitacion() {
     }
 
-    public Habitacion(int numeroHabitacion, String tipoHabitacion, double precioHabitacion) {
+    public Habitacion(int numeroHabitacion, String tipoHabitacion, double precioHabitacion, List<Servicio> servicios) {
         this.numeroHabitacion = numeroHabitacion;
         this.tipoHabitacion = tipoHabitacion;
         this.precioHabitacion = precioHabitacion;
+        this.servicios = servicios;
     }
 
     public int getNumeroHabitacion() {
@@ -38,12 +42,25 @@ public class Habitacion {
         this.precioHabitacion = precioHabitacion;
     }
 
+    public List<Servicio> getServicios() {
+        return servicios;
+    }
+
+    public void setServicios(List<Servicio> servicios) {
+        this.servicios = servicios;
+    }
+
     @Override
     public String toString() {
         return "Habitacion{" +
                 "numeroHabitacion=" + numeroHabitacion +
                 ", tipoHabitacion='" + tipoHabitacion + '\'' +
                 ", precioHabitacion=" + precioHabitacion +
+                ", servicios=" + servicios +
                 '}';
+    }
+
+    public void agregarServicio(Servicio servicio){
+        servicios.add(servicio);
     }
 }
