@@ -1,38 +1,23 @@
 package co.edu.uniquindio.Hotel.Modelo;
 
-public class Servicio {
-    private String servicioOfrecido;
+import co.edu.uniquindio.Hotel.Factory.Consumible;
+
+public class Servicio implements Consumible {
+    private String nombre;
+    private double costo;
     private Habitacion habitacion;
 
     public Servicio() {
     }
 
-    public Servicio(String servicioOfrecido, Habitacion habitacion) {
-        this.servicioOfrecido = servicioOfrecido;
-        this.habitacion = habitacion;
-    }
-
-    public String getServicioOfrecido() {
-        return servicioOfrecido;
-    }
-
-    public void setServicioOfrecido(String servicioOfrecido) {
-        this.servicioOfrecido = servicioOfrecido;
-    }
-
-    public Habitacion getHabitacion() {
-        return habitacion;
-    }
-
-    public void setHabitacion(Habitacion habitacion) {
+    public Servicio(String nombre, double costo, Habitacion habitacion) {
+        this.nombre = nombre;
+        this.costo = costo;
         this.habitacion = habitacion;
     }
 
     @Override
-    public String toString() {
-        return "Servicio{" +
-                "servicioOfrecido='" + servicioOfrecido + '\'' +
-                ", habitacion=" + habitacion +
-                '}';
+    public void consumir() {
+        System.out.println("Servicio de habitación consumodo: " + nombre);
     }
 }
