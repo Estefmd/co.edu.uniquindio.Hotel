@@ -13,13 +13,12 @@ public class Reserva {
     public Reserva() {
     }
 
-    public Reserva(Habitacion habitacion, Cliente cliente, LocalDate fechaIngreso, LocalDate fechaSalida,
-                   List<Servicio> servicios) {
+    public Reserva(Habitacion habitacion, Cliente cliente, LocalDate fechaIngreso, LocalDate fechaSalida) {
         this.habitacion = habitacion;
         this.cliente = cliente;
         this.fechaIngreso = fechaIngreso;
         this.fechaSalida = fechaSalida;
-        this.servicios = servicios;
+
     }
 
     public Habitacion getHabitacion() {

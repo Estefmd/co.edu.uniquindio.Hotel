@@ -1,6 +1,8 @@
 package co.edu.uniquindio.Hotel.Modelo;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.ArrayList;
 
 public class Hotel {
     private String nombre;
@@ -12,63 +14,89 @@ public class Hotel {
     public Hotel() {
     }
 
-    public Hotel(String nombre, List<Habitacion> listaHabitaciones, List<Reserva> listaReservas,
-                 List<Cliente> listaClientes, List<Servicio> listaServicios) {
+    public Hotel(String nombre) {
         this.nombre = nombre;
-        this.listaHabitaciones = listaHabitaciones;
-        this.listaReservas = listaReservas;
-        this.listaClientes = listaClientes;
-        this.listaServicios = listaServicios;
+        this.listaHabitaciones = new ArrayList<>();
+        this.listaReservas = new ArrayList<>();
+        this.listaClientes = new ArrayList<>();
+        this.listaServicios = new ArrayList<>();
     }
 
-    public String getNombre() {
-        return nombre;
+    public Cliente crearCliente(String nombre, String apellido, String numeroCedula, Reserva reserva) {
+        Cliente cliente = obtenerCliente(numeroCedula);
+        if (cliente == null){
+            cliente = new Cliente(nombre, apellido,numeroCedula,reserva);
+            listaClientes.add(cliente);
+
+            return cliente;
+        }
+
+        return null;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public Cliente obtenerCliente(String numeroCedula){
+        for (Cliente cliente : listaClientes){
+            if (cliente.getNumeroCedula().equals(numeroCedula)) {
+
+                return cliente;
+            }
+        }
+
+        return null;
     }
 
-    public List<Habitacion> getListaHabitaciones() {
-        return listaHabitaciones;
+    public boolean actualizarCliente(String nombre, String apellido, String numeroCedula, Reserva reserva) {
+        Cliente clienteActualizar = obtenerCliente(numeroCedula);
+        if (clienteActualizar != null){
+            clienteActualizar.setNombre(nombre);
+            clienteActualizar.setApellido(apellido);
+            clienteActualizar.setNumeroCedula(numeroCedula);
+            clienteActualizar.setReserva(reserva);
+
+            return true;
+        }
+        return false;
     }
 
-    public void setListaHabitaciones(List<Habitacion> listaHabitaciones) {
-        this.listaHabitaciones = listaHabitaciones;
+    public boolean eliminarCliente(String numeroCedula){
+        Cliente clienteEliminar = obtenerCliente(numeroCedula);
+        if (clienteEliminar != null){
+            listaClientes.remove(clienteEliminar);
+
+            return true;
+        }
+        return false;
     }
 
-    public List<Reserva> getListaReservas() {
-        return listaReservas;
+    public Reserva crearReserva(Habitacion habitacion, Cliente cliente, LocalDate fechaIngreso, LocalDate fechaSalida ) {
+        Reserva reserva = obtenerReserva(habitacion);
+        if (reserva == null){
+            reserva = new Reserva(habitacion, cliente,fechaIngreso, fechaSalida);
+            listaReservas.add(reserva);
+
+            return reserva;
+        }
+        return null;
     }
 
-    public void setListaReservas(List<Reserva> listaReservas) {
-        this.listaReservas = listaReservas;
+    public Reserva obtenerReserva(Habitacion habitacion){
+        for (Reserva reserva : listaReservas) {
+            if (reserva.getHabitacion().equals(habitacion)){
+
+                return reserva;
+            }
+        }
+        return null;
     }
 
-    public List<Cliente> getListaClientes() {
-        return listaClientes;
+    public void eliminarReserva (Habitacion habitacion){
+        for (Reserva reserva : listaReservas) {
+            if (reserva.getHabitacion().equals(habitacion)){
+                listaReservas.remove(reserva);
+            }
+        }
+
+
     }
 
-    public void setListaClientes(List<Cliente> listaClientes) {
-        this.listaClientes = listaClientes;
-    }
-
-    public List<Servicio> getListaServicios() {
-        return listaServicios;
-    }
-
-    public void setListaServicios(List<Servicio> listaServicios) {
-        this.listaServicios = listaServicios;
-    }
-
-    @Override
-    public String toString() {
-        return "Hotel{" +
-                "nombre='" + nombre + '\'' +
-                ", listaHabitaciones=" + listaHabitaciones +
-                ", listaReservas=" + listaReservas +
-                ", listaClientes=" + listaClientes +
-                ", listaServicios=" + listaServicios +
-                '}';
-    }
 }
