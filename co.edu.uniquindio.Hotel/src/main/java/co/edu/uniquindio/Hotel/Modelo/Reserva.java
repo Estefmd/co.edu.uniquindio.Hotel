@@ -78,4 +78,13 @@ public class Reserva {
 
     }
 
+    public double calcularCosto(){
+        double costoTotal = habitacion.getPrecioHabitacion();
+        for (Servicio servicio : servicios) {
+            costoTotal += servicio.getCosto();
+        }
+
+        return costoTotal;
+    }
+
 }
