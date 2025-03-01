@@ -68,6 +68,28 @@ public class Hotel {
         return false;
     }
 
+    public void agregarHabitacion(Habitacion habitacion){
+        listaHabitaciones.add(habitacion);
+    }
+
+    public Habitacion obtenerHabitacion(int numeroHabitacion){
+        for (Habitacion habitacion : listaHabitaciones) {
+            if (habitacion.getNumeroHabitacion() == numeroHabitacion){
+
+                return habitacion;
+            }
+        }
+        return null;
+    }
+
+    public void eliminarHabitacion(int numeroHabitacion){
+        for (Habitacion habitacion : listaHabitaciones) {
+            if (habitacion.getNumeroHabitacion() == numeroHabitacion){
+                listaHabitaciones.remove(habitacion);
+            }
+        }
+    }
+
     public Reserva crearReserva(Habitacion habitacion, Cliente cliente, LocalDate fechaIngreso, LocalDate fechaSalida ) {
         Reserva reserva = obtenerReserva(habitacion);
         if (reserva == null){
