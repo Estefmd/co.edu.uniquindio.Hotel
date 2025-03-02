@@ -7,9 +7,6 @@ public class Servicio implements Consumible {
     private double costo;
     private Habitacion habitacion;
 
-    public Servicio() {
-    }
-
     public Servicio(String nombre, double costo, Habitacion habitacion) {
         this.nombre = nombre;
         this.costo = costo;

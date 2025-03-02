@@ -8,10 +8,6 @@ public class Reserva {
     private Cliente cliente;
     private LocalDate fechaIngreso;
     private LocalDate fechaSalida;
-    private List<Servicio> servicios;
-
-    public Reserva() {
-    }
 
     public Reserva(Habitacion habitacion, Cliente cliente, LocalDate fechaIngreso, LocalDate fechaSalida) {
         this.habitacion = habitacion;
@@ -22,6 +18,7 @@ public class Reserva {
     }
 
     public Habitacion getHabitacion() {
+
         return habitacion;
     }
 
@@ -34,14 +31,17 @@ public class Reserva {
     }
 
     public void setCliente(Cliente cliente) {
+
         this.cliente = cliente;
     }
 
     public LocalDate getFechaIngreso() {
+
         return fechaIngreso;
     }
 
     public void setFechaIngreso(LocalDate fechaIngreso) {
+
         this.fechaIngreso = fechaIngreso;
     }
 
@@ -53,14 +53,6 @@ public class Reserva {
         this.fechaSalida = fechaSalida;
     }
 
-    public List<Servicio> getServicios() {
-        return servicios;
-    }
-
-    public void setServicios(List<Servicio> servicios) {
-        this.servicios = servicios;
-    }
-
     @Override
     public String toString() {
         return "Reserva{" +
@@ -68,33 +60,7 @@ public class Reserva {
                 ", cliente=" + cliente +
                 ", fechaIngreso=" + fechaIngreso +
                 ", fechaSalida=" + fechaSalida +
-                ", servicios=" + servicios +
                 '}';
-    }
-
-    public void agregarServicio(Servicio servicio){
-        servicios.add(servicio);
-        habitacion.agregarServicio(servicio);
-
-    }
-
-    public double calcularCosto(){
-        double costoTotal = habitacion.getPrecioHabitacion();
-        for (Servicio servicio : servicios) {
-            costoTotal += servicio.getCosto();
-        }
-
-        return costoTotal;
-    }
-
-    public boolean verificarDisponibilidad(List<Reserva> reservas, Habitacion habitacion) {
-        for (Reserva reserva : reservas) {
-            if (reserva.getHabitacion().equals(habitacion)) {
-
-                return false;
-            }
-        }
-        return true;
     }
 
 }

@@ -1,19 +1,17 @@
 package co.edu.uniquindio.Hotel.Modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Cliente {
     private String nombre;
-    private String apellido;
     private String numeroCedula;
-    private Reserva reserva;
+    private List<Reserva> reservas;
 
-    public Cliente() {
-    }
-
-    public Cliente(String nombre, String apellido, String numeroCedula, Reserva reserva) {
+    public Cliente(String nombre, String numeroCedula) {
         this.nombre = nombre;
-        this.apellido = apellido;
         this.numeroCedula = numeroCedula;
-        this.reserva = reserva;
+        this.reservas = new ArrayList<>();
     }
 
     public String getNombre() {
@@ -24,14 +22,6 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
     public String getNumeroCedula() {
         return numeroCedula;
     }
@@ -40,21 +30,21 @@ public class Cliente {
         this.numeroCedula = numeroCedula;
     }
 
-    public Reserva getReserva() {
-        return reserva;
+    public List<Reserva> getReservas() {
+        return reservas;
     }
 
-    public void setReserva(Reserva reserva) {
-        this.reserva = reserva;
+    public void setReservas(List<Reserva> reservas) {
+        this.reservas = reservas;
     }
 
     @Override
     public String toString() {
         return "Cliente{" +
                 "nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
                 ", numeroCedula='" + numeroCedula + '\'' +
-                ", reserva=" + reserva +
+                ", reservas=" + reservas +
                 '}';
     }
+
 }

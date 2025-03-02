@@ -1,5 +1,6 @@
 package co.edu.uniquindio.Hotel.Modelo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Habitacion {
@@ -8,14 +9,11 @@ public class Habitacion {
     private double precioHabitacion;
     private List<Servicio> servicios;
 
-    public Habitacion() {
-    }
-
-    public Habitacion(int numeroHabitacion, String tipoHabitacion, double precioHabitacion, List<Servicio> servicios) {
+    public Habitacion(int numeroHabitacion, String tipoHabitacion, double precioHabitacion) {
         this.numeroHabitacion = numeroHabitacion;
         this.tipoHabitacion = tipoHabitacion;
         this.precioHabitacion = precioHabitacion;
-        this.servicios = servicios;
+        this.servicios = new ArrayList<>();
     }
 
     public int getNumeroHabitacion() {
@@ -60,7 +58,4 @@ public class Habitacion {
                 '}';
     }
 
-    public void agregarServicio(Servicio servicio){
-        servicios.add(servicio);
-    }
 }
