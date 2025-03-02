@@ -8,6 +8,9 @@ public class Cliente {
     private String numeroCedula;
     private List<Reserva> reservas;
 
+    public Cliente() {
+    }
+
     public Cliente(String nombre, String numeroCedula) {
         this.nombre = nombre;
         this.numeroCedula = numeroCedula;

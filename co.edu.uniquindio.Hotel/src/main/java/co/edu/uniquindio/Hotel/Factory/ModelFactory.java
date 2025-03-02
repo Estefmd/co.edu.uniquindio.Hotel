@@ -21,7 +21,6 @@ public class ModelFactory {
         Hotel hotel = new Hotel();
         Cliente cliente1 = new Cliente();
         cliente1.setNombre("Juan");
-        cliente1.setApellido("Perez");
         cliente1.setNumeroCedula("1094907106");
 
         Habitacion habitacion1 = new Habitacion();
@@ -29,7 +28,7 @@ public class ModelFactory {
         habitacion1.setTipoHabitacion("Suite");
         habitacion1.setPrecioHabitacion(300.000);
 
-        Reserva reserva1 = new Reserva(cliente1, habitacion1);
+        Reserva reserva1 = new Reserva();
         reserva1.setCliente(cliente1);
         reserva1.setHabitacion(habitacion1);
 

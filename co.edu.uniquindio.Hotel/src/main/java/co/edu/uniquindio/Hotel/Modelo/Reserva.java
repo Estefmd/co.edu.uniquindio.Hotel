@@ -9,6 +9,9 @@ public class Reserva {
     private LocalDate fechaIngreso;
     private LocalDate fechaSalida;
 
+    public Reserva() {
+    }
+
     public Reserva(Habitacion habitacion, Cliente cliente, LocalDate fechaIngreso, LocalDate fechaSalida) {
         this.habitacion = habitacion;
         this.cliente = cliente;

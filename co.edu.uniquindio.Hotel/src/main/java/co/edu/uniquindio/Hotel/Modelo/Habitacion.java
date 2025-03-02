@@ -7,13 +7,16 @@ public class Habitacion {
     private int numeroHabitacion;
     private String tipoHabitacion;
     private double precioHabitacion;
-    private List<Servicio> servicios;
+    private List<Servicio> listaServicios;
+
+    public Habitacion() {
+    }
 
     public Habitacion(int numeroHabitacion, String tipoHabitacion, double precioHabitacion) {
         this.numeroHabitacion = numeroHabitacion;
         this.tipoHabitacion = tipoHabitacion;
         this.precioHabitacion = precioHabitacion;
-        this.servicios = new ArrayList<>();
+        this.listaServicios = new ArrayList<>();
     }
 
     public int getNumeroHabitacion() {
@@ -41,11 +44,11 @@ public class Habitacion {
     }
 
     public List<Servicio> getServicios() {
-        return servicios;
+        return listaServicios;
     }
 
     public void setServicios(List<Servicio> servicios) {
-        this.servicios = servicios;
+        this.listaServicios = servicios;
     }
 
     @Override
@@ -54,8 +57,16 @@ public class Habitacion {
                 "numeroHabitacion=" + numeroHabitacion +
                 ", tipoHabitacion='" + tipoHabitacion + '\'' +
                 ", precioHabitacion=" + precioHabitacion +
-                ", servicios=" + servicios +
+                ", listServicios=" + listaServicios +
                 '}';
     }
 
+    public void agregarServicio(Servicio servicio) {
+        if (servicio != null) {
+            listaServicios.add(servicio);
+            System.out.println(" Servicio agregado: " + servicio.getNombre());
+        } else {
+            System.out.println(" Error: El servicio es nulo.");
+        }
+    }
 }
