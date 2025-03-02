@@ -18,12 +18,20 @@ public class SistemaHotel {
         } else {
             System.out.println("No hay habitaciones disponibles.");
         }
-
-        // Verificar si hay clientes antes de acceder a ellos
         if (!hotel.getListaClientes().isEmpty()) {
             hotel.contarReservasPorCliente(hotel.getListaClientes().get(0));
         } else {
             System.out.println("No hay clientes registrados.");
+        }
+        if (!hotel.getListaReservas().isEmpty() && !hotel.getListaServicios().isEmpty()) {
+            Reserva reserva = hotel.getListaReservas().get(0);
+            Servicio servicio = hotel.getListaServicios().get(0);
+            hotel.asignarServicioAReserva(reserva, servicio);
+        } else {
+            System.out.println("No hay reservas o servicios disponibles.");
+        }
+        if (!hotel.getListaHabitaciones().isEmpty()) {
+            hotel.mostrarServiciosDeHabitacion(hotel.getListaHabitaciones().get(0));
         }
     }
 }

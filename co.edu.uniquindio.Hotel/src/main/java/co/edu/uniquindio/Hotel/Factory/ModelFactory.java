@@ -21,16 +21,21 @@ public class ModelFactory {
     }
     private void inicializarDatos() {
         Habitacion habitacion1 = new Habitacion(101, "Doble", 200000);
-        Habitacion habitacion2 = new Habitacion(102, "Suite", 350000);
         hotel.agregarHabitacion(habitacion1);
-        hotel.agregarHabitacion(habitacion2);
 
         Cliente cliente1 = hotel.crearCliente("Juan Pérez", "12345678");
-        Cliente cliente2 = hotel.crearCliente("María López", "87654321");
 
         LocalDate fechaIngreso = LocalDate.of(2025, 3, 10);
         LocalDate fechaSalida = LocalDate.of(2025, 3, 15);
-        Reserva reserva1 = hotel.agregarReserva(habitacion1, cliente1, fechaIngreso, fechaSalida);
+        hotel.agregarReserva(habitacion1,cliente1,fechaIngreso,fechaSalida);
+
+        Servicio servicio1 = new Servicio("Wifi",7000,habitacion1);
+        Servicio servicio2 = new Servicio("Desayuno",20000,habitacion1);
+        hotel.getListaServicios().add(servicio1);
+        hotel.getListaServicios().add(servicio2);
+        habitacion1.agregarServicio(servicio1);
+        habitacion1.agregarServicio(servicio2);
+
     }
     public Hotel getHotel() {
 
