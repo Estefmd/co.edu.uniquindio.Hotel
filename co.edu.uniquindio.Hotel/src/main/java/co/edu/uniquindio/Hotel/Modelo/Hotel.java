@@ -7,16 +7,20 @@ import java.util.List;
 
 public class Hotel {
 
-    public Hotel() {
-    }
     private List<Habitacion> listaHabitaciones;
     private List<Reserva> listaReservas;
     private List<Cliente> listaClientes;
     private List<Servicio> listaServicios;
 
+    public Hotel() {
+        this.listaHabitaciones = new ArrayList<>();
+        this.listaReservas = new ArrayList<>();
+        this.listaClientes = new ArrayList<>();
+        this.listaServicios = new ArrayList<>();
+    }
+
     public Hotel(List<Habitacion> listaHabitaciones, List<Reserva> listaReservas, List<Cliente> listaClientes, List<Servicio> servicios) {
         this.listaHabitaciones = listaHabitaciones != null ? listaHabitaciones : new ArrayList<>();
-        ;
         this.listaReservas = listaReservas != null ? listaReservas : new ArrayList<>();
         this.listaClientes = listaClientes != null ? listaClientes : new ArrayList<>();
         this.listaServicios = listaServicios != null ? listaServicios : new ArrayList<>();
@@ -59,7 +63,7 @@ public class Hotel {
         return null;
     }
 
-    public boolean actualizarCliente(String nombre, String apellido, String numeroCedula, Reserva reserva) {
+    public boolean actualizarCliente(String nombre, String numeroCedula, Reserva reserva) {
         Cliente clienteActualizar = obtenerCliente(numeroCedula);
         if (clienteActualizar != null) {
             clienteActualizar.setNombre(nombre);
