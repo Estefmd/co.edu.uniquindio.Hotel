@@ -87,4 +87,14 @@ public class Reserva {
         return costoTotal;
     }
 
+    public boolean verificarDisponibilidad(List<Reserva> reservas, Habitacion habitacion) {
+        for (Reserva reserva : reservas) {
+            if (reserva.getHabitacion().equals(habitacion)) {
+
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

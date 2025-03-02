@@ -1,5 +1,6 @@
 package co.edu.uniquindio.Hotel.Modelo;
 
+import javax.swing.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ArrayList;
@@ -111,14 +112,46 @@ public class Hotel {
         return null;
     }
 
-    public void eliminarReserva (Habitacion habitacion){
+    public void cancelarReserva (Habitacion habitacion){
         for (Reserva reserva : listaReservas) {
             if (reserva.getHabitacion().equals(habitacion)){
                 listaReservas.remove(reserva);
             }
         }
-
-
     }
 
+    public void asignarServicioAReserva(Reserva reserva, Servicio servicio) {
+        reserva.getHabitacion().agregarServicio(servicio);
+        JOptionPane.showMessageDialog(null, "El Servicio " + servicio.getNombre() + " ha sido asignado a la habitación " + reserva.getHabitacion().getNumeroHabitacion());
+    }
+
+    public void contarReservasPorCliente(Cliente cliente) {
+        int contador = 0;
+        for (Reserva reserva : listaReservas) {
+            if (reserva.getCliente().equals(cliente)) {
+                contador ++;
+            }
+        }
+        JOptionPane.showMessageDialog(null, cliente.getNombre() + " Tiene " + contador + " Reservas realizadas. " );
+    }
+
+    public void verificarDisponibilidad(Habitacion habitacion) {
+        boolean disponible = false;
+        for (Reserva reserva : listaReservas) {
+            if (reserva.getHabitacion().equals(habitacion)) {
+                disponible = true;
+                break;
+            }
+        }
+        String mensaje = disponible ? "Disponible" : "No Disponible";
+        JOptionPane.showMessageDialog(null, "La habitacion " + habitacion.getNumeroHabitacion() + " Está " + mensaje);
+    }
+
+    public void mostrarServiciosDeHabitacion(Habitacion habitacion) {
+        String mensaje = "Servicios de la habitación " + habitacion.getNumeroHabitacion();
+        for (Servicio servicio : habitacion.getServicios()) {
+            mensaje += servicio.getNombre() + " - $ " + servicio.getCosto();
+        }
+        JOptionPane.showMessageDialog(null, mensaje);
+    }
 }
